@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+/pasargerak
+├── .env.local                 # Database Credentials (DB_USER, DB_PASS, dll)
+├── package.json
+├── middleware.js              # Cek Login & Role (Security Gate)
+├── next.config.js
+├── tailwind.config.js
+│
+├── 📂 app/                    # ROUTING LAYER (Next.js App Router)
+│   ├── layout.js              # Root Layout (Font, Metadata Global)
+│   ├── page.js                # Landing Page (Intro Aplikasi)
+│   │
+│   ├── 📂 (auth)/             # GROUP: Autentikasi (Tanpa sidebar/header khusus)
+│   │   ├── login/page.js
+│   │   └── register/page.js
+│   │
+│   ├── 📂 (buyer)/            # GROUP: Modul Pembeli (Layout mirip Marketplace)
+│   │   ├── layout.js          # Navbar Pembeli + Cart Icon
+│   │   ├── home/page.js       # List Produk
+│   │   ├── product/[id]/      # Detail Produk
+│   │   ├── cart/page.js       # Keranjang
+│   │   └── profile/page.js    # Riwayat Order Pembeli
+│   │
+│   ├── 📂 vendor/             # MODUL: Pedagang (URL: /vendor/...)
+│   │   ├── layout.js          # Sidebar Admin Panel (Dashboard style)
+│   │   ├── dashboard/         # Ringkasan Order Masuk
+│   │   ├── products/          # CRUD Produk (List, Add, Edit)
+│   │   └── orders/            # Validasi Order & Generate Token Pickup
+│   │
+│   ├── 📂 agent/              # MODUL: Agen Gerobak (URL: /agent/...)
+│   │   ├── layout.js          # Mobile First Layout (Bottom Navigation)
+│   │   ├── missions/          # List Job (Order di area pasar)
+│   │   ├── pickup/            # Scanner/Input Token Pickup
+│   │   ├── delivery/          # Peta/List Pengantaran & Input Token Penerima
+│   │   └── wallet/            # Cek Komisi
+│   │
+│   └── 📂 api/                # API ROUTES (Backend Endpoints)
+│       ├── auth/              # Login/Register API
+│       ├── products/          # GET, POST Products
+│       └── orders/            # Transaction Logic
+│
+├── 📂 components/             # UI COMPONENTS
+│   ├── 📂 ui/                 # Reusable (Button, Input, Card, Modal)
+│   ├── 📂 buyer/              # Khusus Pembeli (ProductCard, CategoryFilter)
+│   ├── 📂 vendor/             # Khusus Vendor (OrderTable, StockWidget)
+│   └── 📂 agent/              # Khusus Agent (MissionCard, CameraScanner)
+│
+├── 📂 lib/                    # CONFIG & UTILS
+│   ├── db.js                  # Koneksi Postgres (pg pool) - Yg kita buat sebelumnya
+│   ├── auth.js                # Helper cek session user
+│   └── utils.js               # Formatter Rupiah, Date formatter
+│
+├── 📂 services/               # ⚡ DATA LAYER (TEMPAT SQL MANUAL ANDA) ⚡
+│   ├── product.service.js     # Function: getProducts(), createProduct()...
+│   ├── order.service.js       # Function: createOrder(), validatePickup()...
+│   └── user.service.js        # Function: findUserByEmail(), createUser()...
+│
+└── 📂 database/               # DOKUMENTASI DB
+    ├── schema.sql             # Script SQL Create Table (Arsip)
+    └── seed.sql               # Data dummy awal
