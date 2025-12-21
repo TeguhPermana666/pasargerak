@@ -123,7 +123,7 @@ export default async function VendorDashboard() {
                 <div key={order.order_id} className="border border-green-200 rounded-lg p-4 bg-green-50">
                   <div className="flex justify-between items-start mb-3">
                     <div>
-                      <span className={`text-xs font-bold px-2 py-1 rounded ${order.status === 'PENDING' ? 'bg-yellow-200 text-yellow-800' : 'bg-green-200 text-green-800'}`}>
+                      <span className={`text-xs font-bold px-2 py-1 rounded ${order.status === 'PENDING' ? 'bg-yellow-200 text-yellow-800' : order.status === 'ASSIGNED' ? 'bg-blue-200 text-blue-800' : 'bg-green-200 text-green-800'}`}>
                         {order.status}
                       </span>
                       <p className="text-xs text-gray-500 mt-1">Order #{order.order_id}</p>

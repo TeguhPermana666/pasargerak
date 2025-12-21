@@ -19,16 +19,14 @@ export default function RegisterPage() {
           {/* Group: Role Selection (Visual Emphasis) */}
           <div className="bg-green-50 p-4 rounded-xl border border-green-100">
              <label className="block text-sm font-semibold text-pg-primary mb-2">Daftar Sebagai</label>
-             <div className="relative">
-                <select name="role" className="block w-full px-4 py-3 text-base border-gray-300 focus:outline-none focus:ring-pg-primary focus:border-pg-primary sm:text-sm rounded-lg shadow-sm">
-                  <option value="BUYER">👤 Pembeli Rumahan</option>
-                  <option value="VENDOR">🏪 Pedagang Pasar</option>
-                  <option value="AGENT">🛵 Agen Gerobak (Kurir)</option>
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                </div>
-             </div>
+              <select name="role" className="block w-full px-4 py-3 text-base border-gray-300 focus:outline-none focus:ring-pg-primary focus:border-pg-primary sm:text-sm rounded-lg shadow-sm">
+                <option value="BUYER">👤 Pembeli Rumahan</option>
+                <option value="VENDOR">🏪 Pedagang Pasar</option>
+                <option value="AGENT">🛵 Agen Gerobak (Kurir)</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+              </div>
              <p className="text-xs text-pg-text mt-2 opacity-75">
                *Pilih peran yang sesuai dengan aktivitas Anda.
              </p>

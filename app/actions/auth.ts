@@ -63,7 +63,7 @@ export async function loginAction(prevState: any, formData: FormData) {
         // Tidak perlu fetch ulang ke database
         switch (user.role) {
             case 'AGENT':
-                destinationPath = '/agent/missions';
+                destinationPath = '/agent/dashboard';
                 break;
             case 'VENDOR':
                 destinationPath = '/vendor/dashboard';
